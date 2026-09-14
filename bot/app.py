@@ -106,35 +106,35 @@ class Bot:
         self.db.touch(msg['from'])
         text = msg.get('text', '')
         command = text.split()[0].split('@')[0] if text else ''
+
         if command == '/start':
-               self.send_client(
-                  'menu',
-                    uid,
-                   '🏭 ОПТ МЕБЕЛЬ ЮГ\n\n'
-                   'Производство корпусной мебели оптом.\n'
-                   'Работаем с мебельными магазинами, оптовиками, '
-                   'селлерами маркетплейсов и мебельными сетями.\n\n'
-                   'Выберите нужный раздел 👇',
-                     reply_markup={
-                      'inline_keyboard': [
-                         [
-                           {'text': '💰 Получить прайс', 'callback_data': 'menu:price'},
-                           {'text': '📕 Каталог мебели', 'callback_data': 'menu:catalog'}
-                         ],
-                         [
-                           {'text': '📝 Оставить заявку', 'callback_data': 'menu:order'}
-                         ],
-                         [
-                           {'text': '🚚 Доставка и оплата', 'callback_data': 'menu:delivery'}
-                         ],
-                         [
-                           {'text': '☎️ Контакты', 'callback_data': 'menu:contacts'},
-                           {'text': '🌐 Наш сайт', 'url': 'https://optmebelug.ru'}
-                         ]
-                       ]
-                     }
-                 )
-           
+            self.send_client(
+                'menu',
+                uid,
+                '🏭 ОПТ МЕБЕЛЬ ЮГ\n\n'
+                'Производство корпусной мебели оптом.\n'
+                'Работаем с мебельными магазинами, оптовиками, '
+                'селлерами маркетплейсов и мебельными сетями.\n\n'
+                'Выберите нужный раздел 👇',
+                reply_markup={
+                    'inline_keyboard': [
+                        [
+                            {'text': '💰 Получить прайс', 'callback_data': 'menu:price'},
+                            {'text': '📕 Каталог мебели', 'callback_data': 'menu:catalog'}
+                        ],
+                        [
+                            {'text': '📝 Оставить заявку', 'callback_data': 'menu:order'}
+                        ],
+                        [
+                            {'text': '🚚 Доставка и оплата', 'callback_data': 'menu:delivery'}
+                        ],
+                        [
+                            {'text': '☎️ Контакты', 'callback_data': 'menu:contacts'},
+                            {'text': '🌐 Наш сайт', 'url': 'https://optmebelug.ru'}
+                        ]
+                    ]
+                }
+            )
         elif command == '/price':
             self.new_interest(uid, 'price')
         elif command.startswith('/'):
